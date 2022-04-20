@@ -34,12 +34,23 @@
         {% endfor %}
       </tbody>
     </table>
+
+
+    <label for="">
+        <input type="checkbox" id="addInstructionsCheckbox" />
+        Add instructions
+    </label>
+    
+    <textarea id="orderNotes" style="display: none" name="note" ></textarea>
+
+
     <div>
       <p>sub total : {{ cart.total_price | money }}</p>
       <button type="submit" name="update">Update</button>
       <button type="submit" name="checkout">Checkout</button>
     </div>
   </form>
+  
 {% else %}
   <h2>cart</h2>
   Cart is empty
