@@ -45,3 +45,18 @@ $( function () {
         }, "json" )
     });
     // END:: Product - Add to Cart Submit Button
+
+
+    // START:: Cart - Add Instructions 
+    $('#addInstructionsCheckbox').change( function () {
+        if($(this).is(":checked")){
+            $('#orderNotes').show();
+        }else{
+            $('#orderNotes').hide();
+            $('#orderNotes').attr("disabled", true);
+        }
+    })
+    // END:: Cart - Add Instructions 
+
+    
+})
