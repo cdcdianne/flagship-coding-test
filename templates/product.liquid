@@ -6,7 +6,7 @@
     <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
   </a>
 {% endfor %}
-<h1>{{ product.title }}</h1>
+<h1 id="productTitle">{{ product.title }}</h1>
 <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
   <select name="id" id="productSelect">
     {% for variant in product.variants %}
@@ -25,12 +25,18 @@
   <label for="Quantity">quantity</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1">
   
+  {% assign variantQuantity = product.selected_or_first_available_variant.inventory_quantity %}
  
- {% assign btnDisabled = "disabled" %}
+  <input type="number" id="variantQuantity" value="{{variantQuantity}}" hidden>
 
- {% if product.available %}
- {% assign btnDisabled = "" %}
- {% endif %}
+ 
+
+
+  {% assign btnDisabled = "disabled" %}
+
+  {% if product.available %}
+  {% assign btnDisabled = "" %}
+  {% endif %}
 
   <button type="submit" name="add" id="AddToCart" {{btnDisabled}} class="productAddToCartBtn {{btnDisabled}}">Add to cart</button>
 
