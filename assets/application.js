@@ -107,5 +107,71 @@ $( function () {
     })
     // END:: Cart - Add Instructions 
 
+
+
+    // START:: Modal for Product available and cart details
+    if(window.location.pathname.includes("/products/")){
+
+        $.get("/cart.js", null, (data) => {
+           
+            const cartItems = data?.items;
+
+            let renderTableData = '';
+            
+            cartItems.forEach(element => {
+                renderTableData +=
+                '<tr>' +
+                    '<td>' +
+                        '<p>'+ element.properties.cart_index+'</p>' +
+                    '</td>' +
+                    '<td >' +
+                        '<a href="'+ element.url +'">'+ element.title+'</a>' +
+                    '</td>' +
+                    '<td >' +
+                        '<p>'+ Shopify.formatMoney(element.price) +'</p>' +
+                    '</td>' +
+                    '<td >' +
+                        '<p>'+ element.quantity+'</p>' +
+                    '</td>' +
+                    '<td >' +
+                        '<p>'+ Shopify.formatMoney(element.line_price)+'</p>' +
+                    '</td>' +
+                '</tr>'
+            });
+           
+            swal({
+                title: $('#productTitle').text(),
+                animation: false,
+                width: 800,
+                html:
+                'Stocks Available: ' + $('#variantQuantity').val() +
+                '</br> </br>  </br> <hr></hr>'+
+                '<h3><b>Cart Details</b></h3>' +
+                '<p>Total Cart Items: '+ data.items.length+'</p>' +
+                '<table style="width: 100%">' +
+                '<thead>' +
+                    '<th>Cart Index</th>' +
+                    '<th > Prod </th>' +
+                    '<th > Price </th>' +
+                    '<th > Qty </th>' +
+                    '<th > total </th>' +
+                '</thead>' +
+                '<tbody>' +
+                    
+                    renderTableData +
+                
+                '</tbody>' +
+                '<table>' +
+                '<h4> Sub Total: </h4>' +
+                '<h2><b>'+ Shopify.formatMoney(data.total_price) +'</b> </h2>',
+            })
+            
+        }, "json" )
+        
+    }
+
+    // END:: Modal for Product available and cart details
+
+
     
 })
