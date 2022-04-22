@@ -51,6 +51,7 @@ $( function () {
     $('#addInstructionsCheckbox').change( function () {
         if($(this).is(":checked")){
             $('#orderNotes').show();
+            $('#orderNotes').attr("disabled", false);
         }else{
             $('#orderNotes').hide();
             $('#orderNotes').attr("disabled", true);
