@@ -1,8 +1,6 @@
-
 <!-- News Carousel section starts -->
 <section class="news-carousel">
     <div class="cards">
-
 
     {% assign featured = null | sort %}
     {% assign notFeatured = null | sort %}
@@ -19,17 +17,9 @@
         {% endif %}
 
     {% endfor %}
-
-
                 
     {% assign finalList = featured | concat: notFeatured %}
  
-
-
-
-
-
-
     {% for block in finalList %}
         {% assign titleColor = '' %}
         {%- case block.type -%}
@@ -40,9 +30,7 @@
             {%- when "news" -%}
             {% assign titleColor = 'newsProduct' %}
             {%- else -%}
-                
         {%- endcase -%}
-
 
         <div class="cards_item">
             <div class="card">
@@ -53,17 +41,12 @@
                 </div>
             </div>
         </div>
-{% comment %} _________________________
 
-        <p class="{{titleColor}}">{{ block.settings.titleText }}</p>
-        <p class="title">{{ block.settings.descriptionTextArea }}</p>
-_________________________
-        
-    {% endcomment %}
     {% endfor %} 
 
     </div>
 </section>
+
 <!-- News Carousel section ends -->
 {% schema %}
 {

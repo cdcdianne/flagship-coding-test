@@ -29,9 +29,6 @@
  
   <input type="number" id="variantQuantity" value="{{variantQuantity}}" hidden>
 
- 
-
-
   {% assign btnDisabled = "disabled" %}
 
   {% if product.available %}
@@ -39,7 +36,6 @@
   {% endif %}
 
   <button type="submit" name="add" id="AddToCart" {{btnDisabled}} class="productAddToCartBtn {{btnDisabled}}">Add to cart</button>
-
 
 </form>
 <div>{{ product.description }}</div>

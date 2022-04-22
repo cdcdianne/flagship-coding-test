@@ -51,7 +51,6 @@ Shopify.formatMoney = function(cents, format) {
 
 $( function () {
 
-
     // START:: Product - Add to cart Submit button
     var frm = $('#AddToCartForm');
 
@@ -170,9 +169,6 @@ $( function () {
         }, "json" )
         
     }
-
     // END:: Modal for Product available and cart details
-
-
     
 })

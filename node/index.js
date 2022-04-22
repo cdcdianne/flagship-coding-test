@@ -1,9 +1,7 @@
 import fetch from 'node-fetch';
 
 const args = process.argv.slice(2)
-
 const product_id = typeof(args[0]) === Number ? args[0] : Number(args[0]) 
-
 const SHOP_URL = "https://flagship-dayana.myshopify.com/admin/api/2022-04"
 
 const headersOptions = {
