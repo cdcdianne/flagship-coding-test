@@ -47,7 +47,9 @@ async function fetchMetaData(product_id) {
     let findExistingMetafield = metafields.find(o => o.key === paramsData.metafield.key);
 
     // if metafield exist, increment value
-    paramsData.metafield.value = findExistingMetafield.value + 1
+    if(findExistingMetafield){
+        paramsData.metafield.value = findExistingMetafield.value + 1
+    }
 
     postMetafield(paramsData, product_id)
 
